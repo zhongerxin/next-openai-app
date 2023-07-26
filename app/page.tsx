@@ -52,17 +52,17 @@ export default function Chat() {
       onFinish: (message) => {
         // 当 chat stream 结束时，该回调函数将被调用
         // message 是结束时接收的最后一条消息
-        console.log('Chat stream has ended with the following message:', message);
+        console.log('Chat stream has ended with the following message:', message.content);
         // 在这里你可以进行其他操作，比如更新状态或显示提示等
-        handleSpeech()
+        handleSpeech(message.content)
       },
     }
   )
   
-  const handleSpeech = () => {
+  const handleSpeech = (message:string) => {
     const voiceId = '21m00Tcm4TlvDq8ikWAM';  // 你的 voice id
     const apiKey = '5b310c73429ba3bf40a927c0da02bce6'; // 你的 api key
-    const message = messages[messages.length - 1]
+    // const message = messages[messages.length - 1]
 
     fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
       method: 'POST',
@@ -72,7 +72,7 @@ export default function Chat() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "text": `${message.content}`,
+        "text": message,
         "model_id": "eleven_monolingual_v1",
         "voice_settings": {
           "stability": 0.5,
