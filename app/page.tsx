@@ -100,7 +100,7 @@ export default function Chat() {
     setInput(transcript.text ? transcript.text : "");
 }, [transcript.text]);
   React.useEffect(() => {
-    if (messages.length>0) {
+    if (messages.length>0 && (messages[messages.length - 1].role != "user")) {
       handleSpeech()
     }
   }, [messages.length]);
