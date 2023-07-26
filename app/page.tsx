@@ -56,10 +56,10 @@ export default function Chat() {
         <button type='submit'  className="fixed bottom-0 w-full max-w-md p-2 mb-24 border border-gray-300 rounded shadow-xl" >submit</button>
       </form>
       <div>
-        <p>Recording: {recording}</p>
+        {/* <p>Recording: {recording}</p>
         <p>Speaking: {speaking}</p>
         <p>Transcribing: {transcribing}</p>
-        <p>Transcribed Text: {transcript.text}</p>
+        <p>Transcribed Text: {transcript.text}</p> */}
         <div className="fixed bottom-0 w-full max-w-md p-0 mb-36 ">
           <button className="w-full max-w-md p-2 mb-2 border border-gray-300 rounded shadow-xl"  onClick={() => startRecording()}>Start</button>
           <button className="w-full max-w-md p-2 mb-2 border border-gray-300 rounded shadow-xl"  onClick={() => pauseRecording()}>Pause</button>
