@@ -47,7 +47,17 @@ class MyRecord extends React.Component {
  
 
 export default function Chat() {
-  const { messages,setInput, input, handleInputChange, handleSubmit } = useChat()
+  const { messages,setInput, input, handleInputChange, handleSubmit } = useChat(
+    {
+      onFinish: (message) => {
+        // 当 chat stream 结束时，该回调函数将被调用
+        // message 是结束时接收的最后一条消息
+        console.log('Chat stream has ended with the following message:', message);
+        // 在这里你可以进行其他操作，比如更新状态或显示提示等
+        handleSpeech()
+      },
+    }
+  )
   
   const handleSpeech = () => {
     const voiceId = '21m00Tcm4TlvDq8ikWAM';  // 你的 voice id
@@ -99,11 +109,11 @@ export default function Chat() {
   React.useEffect(() => {
     setInput(transcript.text ? transcript.text : "");
 }, [transcript.text]);
-  React.useEffect(() => {
-    if (messages.length>0 && (messages[messages.length - 1].role != "user")) {
-      handleSpeech()
-    }
-  }, [messages.length]);
+  // React.useEffect(() => {
+  //   if (messages.length>0 && (messages[messages.length - 1].role != "user")) {
+  //     handleSpeech()
+  //   }
+  // }, [messages.length]);
   
   const stopRecord = async () => {
     await stopRecording()
