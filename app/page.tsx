@@ -100,7 +100,9 @@ export default function Chat() {
     setInput(transcript.text ? transcript.text : "");
 }, [transcript.text]);
   React.useEffect(() => {
-    handleSpeech()
+    if (messages.length>0) {
+      handleSpeech()
+    }
   }, [messages.length]);
   
   const stopRecord = async () => {
