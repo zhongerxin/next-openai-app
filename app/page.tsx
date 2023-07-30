@@ -61,7 +61,7 @@ export default function Chat() {
   
   const handleSpeech = (message:string) => {
     const voiceId = '21m00Tcm4TlvDq8ikWAM';  // 你的 voice id
-    const apiKey = '5b310c73429ba3bf40a927c0da02bce6'; // 你的 api key
+    const apiKey = '4b8d4c0634efeb15171a24838ffbabe9'; // 你的 api key
     // const message = messages[messages.length - 1]
 
     fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
